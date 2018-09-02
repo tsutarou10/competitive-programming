@@ -50,7 +50,7 @@ vector<edge> G[MAX_V];
 		}
 		if(v == -1) break;
 		used[v] = true;
-		rep(u, 0, V) d[u] = min(d[u], d[v] + cost[u]);
+		rep(u, 0, V) d[u] = min(d[u], d[v] + cost[v][u]);
 	}
 }*/
 
