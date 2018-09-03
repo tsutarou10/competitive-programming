@@ -24,7 +24,6 @@ using namespace std;
 #define bit(a) bitset<8>(a)
 #define des_priority_queue priority_queue<int, vector<int>, greater<int> >
 #define all(v) (v).begin(), (v).end()
-#define initArray(a, array_size, n) fill(a, a + array_size, n)
 typedef long long ll;
 typedef pair<int, int> P;
 const ll INF = 1e18;
