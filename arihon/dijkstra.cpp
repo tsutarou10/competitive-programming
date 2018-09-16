@@ -66,7 +66,7 @@ void dijkstra(int s) {
 		q.pop();
 		int v = p.second;
 		if(d[v] < p.first) continue;
-		rep(i, 0, G[V].size()) {
+		rep(i, 0, G[v].size()) {
 			edge e = G[v][i];
 			if(d[e.to] > d[v] + e.cost) {
 				d[e.to] = d[v] + e.cost;
@@ -75,7 +75,6 @@ void dijkstra(int s) {
 		}
 	}
 }
-
 
 int main(){
 	cin.tie(0);

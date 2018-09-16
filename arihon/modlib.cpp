@@ -36,7 +36,7 @@ ll mod = 1e9 + 7;
 // (H + W)!
 ll fact[H + W];
 //(H + W)!^{-1}
-invfact[H + W];
+ll invfact[H + W];
 
 ll modpow(ll a, ll n, ll mod) {
 	ll res = 1;
