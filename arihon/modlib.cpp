@@ -33,11 +33,14 @@ ll mod = 1e9 + 7;
 #define MAX_H 10000
 #define MAX_W 10000
 
+const int H = 100;
+const int W = 100;
 // (H + W)!
 ll fact[H + W];
 //(H + W)!^{-1}
 ll invfact[H + W];
 
+// a^n modを計算
 ll modpow(ll a, ll n, ll mod) {
 	ll res = 1;
 	while(n > 0) {
@@ -74,4 +77,5 @@ void init() {
 int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
+	cout << modpow(3, 45, 1e9 + 7) << endl;
 }
