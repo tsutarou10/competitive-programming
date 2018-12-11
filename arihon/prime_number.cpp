@@ -29,6 +29,11 @@ const ll INF = 1e18;
 
 #define MAX_V 1000000
 
+const int MAX_L = 1000001;
+const int MAX_SQRT_B = 1000001;
+bool is_prime_array[MAX_L];
+bool is_prime_small[MAX_SQRT_B];
+
 bool is_prime(int n) {
 	for(int i = 2; i * i <= n; i++) {
 		if(n % i == 0) return false;
@@ -76,11 +81,25 @@ int eratosthenes(int n) {
 	return ans;
 }
 
+// [a, b)の整数に対して篩を行う
+ll segment_eratosthenes(ll a, ll b) {
+	for(int i = 0; (ll)i * i < b; i++) is_prime_small[i] = true;
+	for(int i = 0; i < b - a; i++) is_prime_array[i] = true;
+
+	for(int i = 2; (ll)i * i < b; i++) {
+		if(is_prime_small[i]) {
+			for(int j = 2 * i; (ll)j * j < b; j += i) is_prime_small[j] = false; // [2, sqrt(b))の篩
+			for(ll j = max(2LL, (a + i - 1) / i) * i; j < b; j += i) is_prime_array[j - a] = false; // [a, b)の篩
+		}
+	}
+	ll rsl = 0;
+	rep(i, 0, sqrt(b)) {
+		if(is_prime_array[i]) rsl++;
+	}
+	return rsl;
+}
+
 int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
-	int n;
-	cin >> n;
-	int rsl = eratosthenes(n);
-	cout << rsl << endl;
 }
