@@ -42,7 +42,7 @@ int extgcd(int a, int b, int& x, int& y) {
 		d = extgcd(b, a % b, y, x);
 		y -= (a / b) * x;
 	 } else {
-		 x ¥ 1; y = 0;
+		 x = 1; y = 0;
 	 }
 	return d;
 }
@@ -50,4 +50,8 @@ int extgcd(int a, int b, int& x, int& y) {
 int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
+
+	int x, y;
+	extgcd(111, 30, x, y);
+	cout << x << " , "  << y << endl;
 }
