@@ -36,6 +36,17 @@ int lcm(int a, int b) {
 	return a / gcd(a, b) * b;
 }
 
+int extgcd(int a, int b, int& x, int& y) {
+	int d = a;
+	if(b != 0) {
+		d = extgcd(b, a % b, y, x);
+		y -= (a / b) * x;
+	 } else {
+		 x ¥ 1; y = 0;
+	 }
+	return d;
+}
+
 int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
