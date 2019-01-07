@@ -40,7 +40,7 @@ void init(int n_) {
 	while(n < n_) n *= 2;
 
 	// 全ての値をINT_MAXに
-	rep(i, 0, 2 * n - 1) dat[i] = INT_MAX;
+	for(int i = 0; i < 2 * n - 1; i++) dat[i] = INT_MAX;
 }
 
 // k番目の値(0-indexed)をaに変更
@@ -61,10 +61,10 @@ void update(int k, int a) {
 // したがって、外からはquery(a, b, 0, 0, n)として呼ぶ
 int query(int a, int b, int k, int l, int r) {
 	// [a, b)と[l,r)が交差しなければ、INT_MAX
-	if(r <= a or b <= 1) return INT_MAX;
+	if(r <= a or b <= l) return INT_MAX;
 
 	// [a, b)が[l,r)を完全に含んでいれば、この節点の値
-	if(a <= 1 and r <= b) return dat[k];
+	if(a <= l and r <= b) return dat[k];
 	else {
 		// そうでなければ、2つの子の最小値
 		int vl = query(a, b, k * 2 + 1, l, (l + r) / 2);
@@ -77,7 +77,6 @@ int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	/*
 	int n;
 	cin >> n;
 	int a[n];
@@ -87,6 +86,11 @@ int main(){
 		update(i, a[i]);
 	}
 
+	rep(i, 0, n * n) cout << dat[i] << " ";
+	cout << endl;
+	cout << query(0, 2, 0, 0, n) << endl;
+
+	/*
 	ll rsl = 0;
 	rep(l, 0, n) rep(r, l, n) {
 		rsl += query(l, r, 0, 0, n);
