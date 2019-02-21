@@ -50,6 +50,11 @@ for(int i = 0; S < 1 << n; S++) {
 }
 ~~~
 
+### bit列の1が立ってる数
+~~~cpp
+__builtin_popcount(msk)
+~~~
+
 ## 二分探索
 ~~~cpp
 binary_search(a.begin(), a.end(), key)
@@ -84,3 +89,4 @@ cout << upper_bound(array, array + 8, 3) - array << endl; // 6
 // 末尾からの距離
 cout << array - lower_bound(array, array + 8, 1) << endl;
 ~~~
+
