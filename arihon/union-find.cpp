@@ -27,46 +27,50 @@ typedef long long ll;
 typedef pair<int, int> P;
 const ll INF = 1e18;
 
-#define MAX_N 10000
+#define MAX_N 100000
 
 int par[MAX_N]; // 親
 int depth[MAX_N]; // 木の深さ
 
-// n要素で初期化
-void init(int n) {
-	rep(i, 0, n) {
-		par[i] = i;
-		depth[i] = 0;
-	}
-}
+struct UnionFind {
+    vector<int> par;
+    UnionFind(int n) : par(n, -1) { }
+    void init(int n) { par.assign(n, -1); }
 
-// 木の根を求める
-int find(int x) {
-	if(par[x] == x) return x;
-	else return par[x] = find(par[x]);
-}
+    // 木の根を求める
+    int root(int x) {
+        if(par[x] < 0) return x;
+        else return par[x] = root(par[x]);
+    }
 
-// xとyの属する集合を併合
-void unite(int x, int y) {
-	x = find(x);
-	y = find(y);
-	if(x == y) return;
+    // xとyの属する集合を併合
+    void unite(int x, int y) {
+        x = root(x);
+        y = root(y);
+        if(x == y) return;
 
-	if(depth[x] < depth[y]) {
-		par[x] = y;
-	} else {
-		par[y] = x;
-		if(depth[x] == depth[y]) depth[x]++;
-	}
-}
+        if(par[x] > par[y]) swap(x, y);
+        par[x] += par[y];
+        par[y] = x;
 
-// xとyが同じ集合に属するか否か
-bool same(int x, int y) {
-	return find(x) == find(y);
-}
+    }
 
+    // xとyが同じ集合に属するか否か
+    bool same(int x, int y) {
+        return root(x) == root(y);
+    }
+
+    int size(int x) {
+        return -par[root(x)];
+    }
+};
 
 int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
+
+    int N = 10;
+    UnionFind uf(N);
+
+
 }
