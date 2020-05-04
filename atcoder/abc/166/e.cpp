@@ -36,15 +36,15 @@ int main(){
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-  map<int, int> m;
-  int n;
+  map<ll, ll> m;
+  ll n;
   cin >> n;
-  int a[n];
+  ll a[n];
   rep(i, 1, n + 1) {
     cin >> a[i];
     ++m[i - a[i]];
   }
-  int rsl = 0;
+  ll rsl = 0;
   rep(i, 1, n + 1) {
     rsl += m[i + a[i]];
   }
