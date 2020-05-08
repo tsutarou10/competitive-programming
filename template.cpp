@@ -32,7 +32,11 @@ const ll INF = 1e18;
 
 #define MAX_V 1000000
 
+void print_setprecision(int i, long double rsl) {
+  cout << fixed << setprecision(i) << rsl << endl;
+}
+
 int main(){
-	cin.tie(0);
-	ios::sync_with_stdio(false);
+  cin.tie(0);
+  ios::sync_with_stdio(false);
 }
