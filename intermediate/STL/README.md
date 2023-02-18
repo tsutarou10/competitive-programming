@@ -7,11 +7,14 @@
 ```bash
 .
 ├── README.md
+├── practice
 ├── introduction
 ├── beginner
 ├── intermediate-1
 └── intermediate-2
 ```
+
+- practice: 競技プログラミングで実際に STL を使う例
 
 | introduction | beginner | intermediate-1 | intermediate-2       |
 | ------------ | -------- | -------------- | -------------------- |
